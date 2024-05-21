@@ -9,14 +9,14 @@ import Foundation
 
 struct BMI_logic {
 
-    var bmi : Float = 0.00
+    var bmi : Float?
     
     mutating func calculateBMI(height: Float, weight: Float){
         bmi = weight / pow(height, 2)
     }
     
     func getBMIvalue() -> String{
-        let bmiToOneDecimalPlace = String(format: "%.1f", bmi)
+        let bmiToOneDecimalPlace = String(format: "%.2f", bmi ?? 0.0)
         return bmiToOneDecimalPlace
     }
     
