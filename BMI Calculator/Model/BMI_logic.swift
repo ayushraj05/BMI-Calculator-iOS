@@ -8,7 +8,16 @@
 import Foundation
 
 struct BMI_logic {
-//    func getHeight(Float: SliderValue) -> Float{
-//       return SliderValue
-//    }
+
+    var bmi : Float = 0.00
+    
+    mutating func calculateBMI(height: Float, weight: Float){
+        bmi = weight / pow(height, 2)
+    }
+    
+    func getBMIvalue() -> String{
+        let bmiToOneDecimalPlace = String(format: "%.1f", bmi)
+        return bmiToOneDecimalPlace
+    }
+    
 }

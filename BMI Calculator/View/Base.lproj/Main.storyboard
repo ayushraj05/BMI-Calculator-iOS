@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Calculate View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BMI_Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="CalculateViewController" customModule="BMI_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -120,18 +120,17 @@
                                             </backgroundConfiguration>
                                             <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="0.0"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="calcuate_bmi:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AR0-Lp-Y6S"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="FPl-mM-g6E" secondAttribute="trailing" id="3Ap-Ne-YDp"/>
                                     <constraint firstItem="CTg-XO-8U8" firstAttribute="leading" secondItem="jDM-RY-KaL" secondAttribute="leading" constant="50" id="5BS-Ae-7mc"/>
-                                    <constraint firstItem="FPl-mM-g6E" firstAttribute="leading" secondItem="jDM-RY-KaL" secondAttribute="leading" constant="34" id="5xO-ZP-bIG"/>
                                     <constraint firstAttribute="trailing" secondItem="CTg-XO-8U8" secondAttribute="trailing" constant="50" id="B51-Ev-oQ9"/>
-                                    <constraint firstItem="FPl-mM-g6E" firstAttribute="leading" secondItem="jDM-RY-KaL" secondAttribute="leading" id="MPA-1s-kel"/>
                                     <constraint firstItem="PTd-YG-uPE" firstAttribute="leading" secondItem="jDM-RY-KaL" secondAttribute="leading" constant="50" id="Sdz-he-eBC"/>
                                     <constraint firstItem="Dxf-Dw-hX4" firstAttribute="leading" secondItem="jDM-RY-KaL" secondAttribute="leading" constant="10" id="ZTB-I0-W9B"/>
                                     <constraint firstAttribute="trailing" secondItem="Dxf-Dw-hX4" secondAttribute="trailing" constant="10" id="b6w-d5-H3V"/>
-                                    <constraint firstAttribute="trailing" secondItem="FPl-mM-g6E" secondAttribute="trailing" constant="34" id="i3u-XY-wvg"/>
                                     <constraint firstAttribute="trailing" secondItem="PTd-YG-uPE" secondAttribute="trailing" constant="50" id="zUb-NC-8ji"/>
                                 </constraints>
                             </stackView>
@@ -150,27 +149,30 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="height_slider_value" destination="CTg-XO-8U8" id="jFt-mA-v5C"/>
                         <outlet property="height_value" destination="rs8-hb-SlP" id="jN8-Zs-PtE"/>
+                        <outlet property="weight_slider_value" destination="PTd-YG-uPE" id="52D-wn-zfC"/>
                         <outlet property="weight_value" destination="QOV-e7-evl" id="m8P-bg-kIS"/>
+                        <segue destination="KPG-q7-Vh1" kind="presentation" identifier="goToResult" id="RB4-f3-OeZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="139.69465648854961" y="3.5211267605633805"/>
         </scene>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="u1z-17-Dz9">
             <objects>
-                <viewController id="KPG-q7-Vh1" customClass="ViewController" customModule="BMI_Calculator" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KPG-q7-Vh1" customClass="ResultViewController" customModule="BMI_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ixR-5D-gSj">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="result_background" translatesAutoresizingMaskIntoConstraints="NO" id="eki-fP-py2" userLabel="background image">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Hh0-W6-xWe" userLabel="Total Text view">
-                                <rect key="frame" x="64.333333333333343" y="347" width="264.33333333333326" height="158"/>
+                                <rect key="frame" x="64.333333333333343" y="342" width="264.33333333333326" height="158"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YOUR RESULT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxl-t2-46l">
                                         <rect key="frame" x="0.0" y="0.0" width="264.33333333333331" height="48"/>
@@ -198,7 +200,7 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eBh-W7-p1I">
-                                <rect key="frame" x="51" y="736" width="290" height="51"/>
+                                <rect key="frame" x="51" y="760" width="290" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="c83-dL-IqT"/>
                                 </constraints>
@@ -210,6 +212,9 @@
                                     </backgroundConfiguration>
                                     <fontDescription key="titleFontDescription" type="system" weight="heavy" pointSize="22"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="RecalculateGotPressed:" destination="KPG-q7-Vh1" eventType="touchUpInside" id="rtI-3F-qfS"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hDi-wj-kjH"/>
@@ -226,6 +231,10 @@
                             <constraint firstItem="eki-fP-py2" firstAttribute="trailing" secondItem="ixR-5D-gSj" secondAttribute="trailing" id="y5H-Kw-RGf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="Advice_lable" destination="MVo-3p-4j3" id="swe-ze-A4V"/>
+                        <outlet property="BMI_lable" destination="w27-Pb-4e3" id="p2Q-zh-skM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYQ-mw-gkz" sceneMemberID="firstResponder"/>
             </objects>
